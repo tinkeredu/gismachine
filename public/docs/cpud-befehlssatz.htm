@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Befehlssatz</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="responsive.css">
+<meta name="author" content="JoSchmidt">
+<meta name="editor" content="html-editor phase 5">
+
+<style type="text/css">
+ <!--
+h1 {
+ font-family: monospace;
+ font-weight: bold;
+ color: #FFFF00;
+ background-color:#0000A0;
+}
+ =.Stil1 {font-family: "Courier New", Courier, monospace}
+.Stil5 {color: #FFFF00; font-weight: bold; font-size: x-large; }
+-->
+ </style>
+
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" alink="#FF0000" vlink="#FF0000">
+
+
+<table width="100%" border="1" cellpadding="2" cellspacing="2">
+ <tr>
+  <th width="10%" scope="col">Befehl</th>
+  <th width="11%" scope="col">&nbsp;</th>
+  <th width="79%" scope="col">Bedeutung</th>
+ </tr>
+ <tr>
+  <td bgcolor="#0000FF" class="Stil5">LDA</td>
+  <td><strong>LoaD Ac</strong></td>
+  <td>L&auml;d den Inhalt der ausgew&auml;hlten Zelle in den AC</td>
+ </tr>
+ <tr>
+  <td bgcolor="#0000FF" class="Stil5">STA</td>
+  <td><strong>STore Ac</strong></td>
+  <td>Speichert den Inhalt des AC in der ausgew&auml;hlten Zelle</td>
+ </tr>
+ <tr>
+  <td bgcolor="#0000FF"><span class="Stil5">INM</span></td>
+  <td><strong>INput from Memory</strong></td>
+  <td>Kopiert den Wert aus der Eingabe in die ausgew&auml;hlte Zelle</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">OUTM</span></td>
+   <td><strong>OUTput from Memory</strong></td>
+   <td>Kopiert den Wert der ausgew&auml;hlten Zelle in die Ausgabe</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">ADD</span></td>
+   <td><strong>ADD</strong></td>
+   <td>Addiert den AC und die ausgew&auml;hlte Zelle; das Ergebnis ersetzt den Wert im AC</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">SUB</span></td>
+   <td><strong>SUBtract</strong></td>
+   <td>Subtrahiert die ausgew&auml;hlte Zelle vom AC; das Ergebnis ersetzt den Wert im AC</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">MUL</span></td>
+   <td><strong>MULtiply</strong></td>
+   <td>Multipliziert den AC mit der ausgew&auml;hlten Zelle; das Ergebnis (untere 16 Bit) ersetzt den Wert im AC</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">DIV</span></td>
+   <td><strong>DIVide</strong></td>
+   <td>Dividiert den AC ganzzahlig durch die ausgew&auml;hlte Zelle; das Ergebnis ersetzt den Wert im AC. Division durch 0 ist nicht erlaubt.</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">AND</span></td>
+   <td>&nbsp;</td>
+   <td>Bitweise UND-Verkn&uuml;pfung zwischen dem Wert im AC und der ausgew&auml;hlten Zelle; das Ergebnis ersetzt den Wert im AC</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">OR</span></td>
+   <td>&nbsp;</td>
+   <td>Bitweise ODER-Verkn&uuml;pfung zwischen dem Wert im AC und der ausgew&auml;hlten Zelle; das Ergebnis ersetzt den Wert im AC</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">XOR</span></td>
+   <td>&nbsp;</td>
+   <td>Bitweise XOR-Verkn&uuml;pfung zwischen dem Wert im AC und der ausgew&auml;hlten Zelle; das Ergebnis ersetzt den Wert im AC</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">INC</span></td>
+   <td><strong>INCrement</strong></td>
+   <td>Erh&ouml;ht (inkrementiert) den Wert des ACs um 1</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">DEC</span></td>
+   <td><strong>DECrement</strong></td>
+   <td>Vermindert (dekrementiert) den Wert des ACs um 1</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF" class="Stil5">SHL</td>
+   <td><strong>SHift Left</strong></td>
+   <td>Verschiebt die Bits im AC um eine Stelle nach links </td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">SHR</span></td>
+   <td><strong>SHift Right</strong></td>
+   <td>Verschiebt die Bits im AC um eine Stelle nach rechts</td>
+ </tr>
+ <tr>
+   <td bgcolor="#0000FF"><span class="Stil5">NEG</span></td>
+   <td><strong>NEGate</strong></td>
+   <td>Negiert den Wert im AC, dabei wird aus 0 eine 1 und umgekehrt</td>
+ </tr>
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,694 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="responsive.css">
+<meta name=Generator content="Microsoft Word 11 (filtered)">
+<title>Hilfe zum Programm CPU-Direkt (CPUD)</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Helvetica;
+	panose-1:2 11 5 4 2 2 2 3 2 4;}
+@font-face
+	{font-family:Courier;
+	panose-1:2 7 4 9 2 2 5 2 4 4;}
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+h1
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Helvetica;
+	font-weight:normal;}
+h2
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.2pt;
+	margin-bottom:.0001pt;
+	text-indent:.05pt;
+	font-size:12.0pt;
+	font-family:Helvetica;
+	font-weight:normal;}
+h3
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:1.0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+h4
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:2.0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+h5
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:35.45pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal;}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:35.4pt;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+p.pascal, li.pascal, div.pascal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:1.0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Courier;
+	font-weight:bold;}
+p.ArbeitKopf, li.ArbeitKopf, div.ArbeitKopf
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.Kopfol, li.Kopfol, div.Kopfol
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.ArbeitKopfunten, li.ArbeitKopfunten, div.ArbeitKopfunten
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.ParadoxTabelle, li.ParadoxTabelle, div.ParadoxTabelle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:1.0cm;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:Courier;}
+p.Aufgabe123, li.Aufgabe123, div.Aufgabe123
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:21.3pt;
+	margin-bottom:.0001pt;
+	text-indent:-21.3pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.Aufgabeabc, li.Aufgabeabc, div.Aufgabeabc
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:42.55pt;
+	margin-bottom:.0001pt;
+	text-indent:-21.25pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.Aufgabebody, li.Aufgabebody, div.Aufgabebody
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:42.55pt;
+	margin-bottom:.0001pt;
+	text-indent:-21.25pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.Kopfor, li.Kopfor, div.Kopfor
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.AufgabeA123, li.AufgabeA123, div.AufgabeA123
+	{margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:21.25pt;
+	text-indent:-21.25pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;
+	font-style:italic;}
+p.AufgabeAabc, li.AufgabeAabc, div.AufgabeAabc
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:63.55pt;
+	text-indent:-21.0pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+p.AufgabeABody, li.AufgabeABody, div.AufgabeABody
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:21.25pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.9pt 2.0cm 2.0cm 2.0cm;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=DE>
+
+<div class=Section1>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'>Hilfe zum Programm
+CPU-Direkt (CPUD)</span></b></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>Die Programmidee</b></p>
+
+<p class=MsoNormal>Das Programm CPUD simuliert eine stark vereinfachte
+Datenverarbeitungsanlage. Diese einfache Maschine besteht aus einem
+Mikroprozessor und einem Speicherwerk mit insgesamt 256 Speicherzellen, die jeweils 2 Byte also 16 Bit speichern k&ouml;nnen.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Der Zweck der Simulation ist es, dem Benutzer einen ersten
+Eindruck in die Funktion eines Mikroprozessors (<i>Central Processing Unit</i>
+kurz <b>CPU</b>) zu vermitteln.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Die simulierte CPU stellt insgesamt 16 Befehle zur
+Verfügung. Diese Befehle führen Operationen mit binären Daten aus. Die
+betroffenen Daten befinden sich entweder in einer universellen Speicherzelle –
+dem so genannten <em><strong>Akkumulator</strong></em> (AC) – oder in einer <em><strong>Speicherzelle</strong></em> des
+Speicherwerks. Im zweiten Fall wird die betroffene Speicherzelle anhand ihrer
+Nummer – der so genannten <em><strong>Adresse</strong></em> – identifiziert. </p>
+
+<p class=MsoNormal>Für die <em><strong>Dateneingabe</strong></em> ist ein Feld aus 16 Checkboxen
+vorgesehen. Dies ermöglicht die Eingabe eines 16-Bit Datenwortes in binärer
+Form (checked=1; unchecked=0). </p>
+
+<p class=MsoNormal>Die <em><strong>Datenausgabe</strong></em> erfolgt über 16 „LEDs“, also ebenfalls in
+binärer Form, es kann aber auch eine dezimale Anzeige aktiviert werden (Men&uuml; Ansicht).</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>Die Handhabung</b></p>
+
+<p class=MsoNormal>CPUD wird ausschließlich mit der Maus bedient, denn alle
+Daten werden in binärer Form eingegeben – grundlegende Kenntnisse über das
+duale Zahlsystem sollten also vorhanden sein!</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Die Maschine ist nicht programmierbar! Jeder Befehl wird
+durch Anklicken einer entsprechenden Schaltfläche aktiviert. Der Befehl wird
+daraufhin ausgeführt und der Rechner ist für die nächste Operation bereit.
+Probleme (Aufgaben) werden also durch eine Folge von Klicks auf die jeweiligen
+Schaltflächen gelöst.</p>
+<p class=MsoNormal>Es gibt verschiedene Befehlstypen: </p>
+<ul>
+  <li>Befehle, die direkt den Wert des ACs ver&auml;ndern (INC, DEC ...)</li>
+  <li>Befehle, die Daten vom AC in den Speicher (STA) oder vom Speicher in den AC  (LDA) kopieren</li>
+  <li>Befehle, die Daten von der Eingabe in den Speicher (INM) oder aus dem Speicher in die Ausgabe (OUTM) kopieren</li>
+  <li>Befehle, welche die Daten im AC mit Daten im Speicher verkn&uuml;pfen (Addition, Subtraktion...) und das Ergebnis im AC speichern</li>
+</ul>
+<p class=MsoNormal>&nbsp;</p>
+<p class=MsoNormal>Verwendet ein Befehl Daten aus dem Speicher, so muss <strong>nach</strong> Anklicken der zugeh&ouml;rigen Schaltfl&auml;che   die gew&uuml;nschte Speicherzelle markiert werden.</p>
+<p class=MsoNormal> </p>
+
+<p class=MsoNormal>Durch Aktivieren der Protokollfunktion können die verwendeten
+Befehle kontinuierlich aufgezeichnet werden.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>Zusammenfassung</b></p>
+
+<p class=MsoNormal>Die Arbeit mit CPUD ähnelt stark der Benutzung eines sehr
+einfachen Taschenrechners. Gegenüber einem „üblichen“ TR sind folgende
+Einschränkungen vorhanden</p>
+
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt'>-          es
+gibt  nur die Rechenarten Addition, Subtraktion, Multiplikation und Division, dabei k&ouml;nnen nur <strong>ganze</strong> Zahlen verwendet werden.</p>
+<p class=MsoNormal style='margin-left:35.45pt;text-indent:-35.45pt'>-          bevor
+man zwei Zahlen durch eine Operation verkn&uuml;pfen kann, muss der eine Operand in den Akkumulator
+und der andere in den Speicher „transportiert“ werden. Nach der Rechnung muss
+das Ergebnis aus dem AC in die Anzeige kopiert werden, da der AC eine interne
+Speicherzelle der CPU und von „außen“ nicht sichtbar ist.  </p>
+
+<p class=MsoNormal>Die beschriebene Ähnlichkeit ist natürlich kein Zufall, den
+auch ein TR arbeitet mit einem - allerdings für mathematische Aufgaben
+optimierten – Mikroprozessor.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<b><span style='font-size:12.0pt;font-family:"Times New Roman"'><br clear=all
+style='page-break-before:always'>
+</span></b>
+
+<p class=MsoNormal><b>Ausblick</b></p>
+
+<p class=MsoNormal>Wenn Sie mit CPUD ein Problem (siehe Aufgaben) gelöst haben
+und sich anschließend das Protokoll der Lösung betrachten, so kann man diese
+Aufzeichnungen auch als <b><i>Programm</i></b> der Lösung bezeichnen. Gäbe es
+die Möglichkeit, die aufgezeichneten Anweisungen nacheinander wie ein
+„Tastaturmakro“ abzuspielen, so hätte man eine wieder verwendbare Lösung für
+z.B. die Addition zweier Zahlen erstellt.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Der ungarische Mathematiker <i>John von Neumann</i> formulierte
+1946 das theoretische Konzept einer universellen (programmierbaren)
+Rechenanlage. Ein wichtiger Punkt dieses Konzepts ist, dass von Neumann
+vorschlägt nicht nur die Daten, sondern auch die Anweisungen für den Prozessor
+in binärer Form im Speicher des Rechners zu hinterlegen.</p>
+
+<p class=MsoNormal>Um dies umzusetzen, muss jeder Anweisung die der Prozessor
+ausführen kann, eine Zahl zugeordnet werden, d.h. die verfügbaren Anweisungen
+werden nummeriert. </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Beispiel:</p>
+
+<p class=MsoPlainText>&nbsp;</p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText><b><span style='font-size:8.0pt;font-family:"Times New Roman"'>Schaltfläche
+  / Anweisung</span></b></p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText><b><span style='font-size:8.0pt;font-family:"Times New Roman"'>Nummer</span></b></p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText><b><span style='font-size:8.0pt;font-family:"Times New Roman"'>binär</span></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>LDA</p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>1</p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>0000 0001</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>STA</p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>2</p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>0000 0010</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>ADD</p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>9</p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>0000 1001</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>SUB</p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>10</p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>0000 1010</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>INC</p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>14</p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText><span lang=FR>0000 1100</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>DEC</p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>15</p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText><span lang=EN-GB>0000 1101</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>INM</p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>24</p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText><span lang=EN-GB>0001 1000</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=149 valign=top style='width:111.75pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>OUTM</p>
+  </td>
+  <td width=85 valign=top style='width:63.75pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText>25</p>
+  </td>
+  <td width=104 valign=top style='width:78.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoPlainText><span lang=EN-GB>0001 1001</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoPlainText>&nbsp;</p>
+
+<p class=MsoNormal><span style='font-size:8.0pt'>Anmerkung: Die Nummerierung
+ist dabei natürlich willkürlich wählbar.</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Speichert man nun, beginnend bei Adresse 0, die Folge der
+Anweisungen (und die dabei verwendeten Adressen) in binärer Form ab, so
+entsteht ein <em><strong>Programm</strong></em>.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Beispiel: </p>
+
+<p class=MsoNormal>Sie haben bei der Addition zweier Zahlen das folgende
+Protokoll erstellt: </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Courier New"'>INM   
+8 ; Zahl einlesen und in Zelle 8 speichern</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Courier New"'>INM   
+9 ; Zahl einlesen und in Zelle 9 speichern</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Courier New"'>LDA   
+8 ; Zelle 8 in den AC kopieren</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Courier New"'>ADD   
+9 ; Zelle 9 zum AC addieren. Ergebnis im AC</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Courier New"'>STA  
+10 ; den AC nach Zelle 10 kopieren</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Courier New"'>OUTM 
+10 ; Zelle 10 in die Ausgabe kopieren</span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></b></p>
+
+<p class=MsoNormal>Diese Anweisungen speichern wir nun ab Adresse 0 in binärer
+Form. Dabei verwenden wir die ersten (linken) 8 Bit einer Speicherzelle für die
+Nummer des Befehls und die verbleibenden 8 Bit für die im Befehl verwendete
+Adresse:  </p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=186 valign=top style='width:139.6pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt'>Zeile im Protokoll  </span></p>
+  </td>
+  <td width=70 valign=top style='width:52.85pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt'>Adresse</span></p>
+  </td>
+  <td width=233 colspan=2 valign=top style='width:174.45pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:10.0pt'>Anweisung in binärer Form</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=186 valign=top style='width:139.6pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:8.0pt;font-family:"Courier New"'>INM   
+  8</span></p>
+  </td>
+  <td width=70 valign=top style='width:52.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0</span></p>
+  </td>
+  <td width=91 valign=top style='width:68.1pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0001
+  1000</span></p>
+  </td>
+  <td width=142 valign=top style='width:106.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  1000</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=186 valign=top style='width:139.6pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:8.0pt;font-family:"Courier New"'>INM   
+  9 </span></p>
+  </td>
+  <td width=70 valign=top style='width:52.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>1</span></p>
+  </td>
+  <td width=91 valign=top style='width:68.1pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0001
+  1000</span></p>
+  </td>
+  <td width=142 valign=top style='width:106.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  1001</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=186 valign=top style='width:139.6pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:8.0pt;font-family:"Courier New"'>LDA   
+  8 </span></p>
+  </td>
+  <td width=70 valign=top style='width:52.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>2</span></p>
+  </td>
+  <td width=91 valign=top style='width:68.1pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  0001</span></p>
+  </td>
+  <td width=142 valign=top style='width:106.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  1000</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=186 valign=top style='width:139.6pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:8.0pt;font-family:"Courier New"'>ADD   
+  9 </span></p>
+  </td>
+  <td width=70 valign=top style='width:52.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>3</span></p>
+  </td>
+  <td width=91 valign=top style='width:68.1pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  1001</span></p>
+  </td>
+  <td width=142 valign=top style='width:106.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  1001</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=186 valign=top style='width:139.6pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:8.0pt;font-family:"Courier New"'>STA  
+  10 </span></p>
+  </td>
+  <td width=70 valign=top style='width:52.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>4</span></p>
+  </td>
+  <td width=91 valign=top style='width:68.1pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  0010</span></p>
+  </td>
+  <td width=142 valign=top style='width:106.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  1010</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=186 valign=top style='width:139.6pt;border:none;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:8.0pt;font-family:"Courier New"'>OUTM 
+  10 </span></p>
+  </td>
+  <td width=70 valign=top style='width:52.85pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>5</span></p>
+  </td>
+  <td width=91 valign=top style='width:68.1pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0001
+  1001</span></p>
+  </td>
+  <td width=142 valign=top style='width:106.35pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span lang=EN-GB style='font-size:8.0pt;font-family:"Courier New"'>0000
+  1010</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Dadurch entsteht ein sog. <b><i>Maschinenprogramm</i></b>. Ein
+entsprechend konstruierter Rechner ist in der Lage dieses Programm Zelle für
+Zelle auszulesen (fetch), den jeweiligen Befehl zu erkennen (decode) und
+auszuführen (execute). Die Programmausführung besteht also aus einem Zyklus,
+den man auch den „von Neumann Zyklus“ nennt.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Erste Erfahrungen mit dieser  Form der Programmierung können
+Sie mit dem Simulationsprogramm Altair machen.</p>
+
+</div>
+
+</body>
+
+</html>
