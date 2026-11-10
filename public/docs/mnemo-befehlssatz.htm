@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Unbenanntes Dokument</title>
+<style type="text/css">
+<!--
+div.MsoPlainText {margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+li.MsoPlainText {margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoPlainText {margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+.Stil2 {font-family: Arial, Helvetica, sans-serif; font-size: small; }
+-->
+</style>
+</head>
+
+<body>
+<div class="Section1">
+  <p><strong>Transportbefehle</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></p>
+  <table border="1" cellspacing="0" cellpadding="5" width="652">
+    <tr>
+      <td colspan="2" valign="top"><p><strong>Mnemo </strong></p>        </td>
+      <td width="215" valign="top"><p>&nbsp;</p></td>
+      <td width="361" valign="top"><p><strong> Bedeutung</strong></p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>LDA</p></td>
+      <td width="28" valign="top"><p>X</p></td>
+      <td width="215" valign="top"><p>LOAD    INTO AC</p></td>
+      <td width="361" valign="top"><p class="Stil2">Lade    (kopiere) den Wert der angegebenen Speicherzelle in den AC.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>STA</p></td>
+      <td width="28" valign="top"><p>X </p></td>
+      <td width="215" valign="top"><p>STORE    AC TO MEMORY </p></td>
+      <td width="361" valign="top"><p class="Stil2">Kopiere    den AC in die angegebenen Speicherzelle.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>OUTM</p></td>
+      <td width="28" valign="top"><p>X </p></td>
+      <td width="215" valign="top"><p>OUTPUT    FROM MEMORY</p></td>
+      <td width="361" valign="top"><p class="Stil2">Kopiere    den Wert der angegebenen Speicherzelle in die Output-Einheit.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>INM</p></td>
+      <td width="28" valign="top"><p>X </p></td>
+      <td width="215" valign="top"><p>INPUT TO    MEMORY </p></td>
+      <td width="361" valign="top"><p class="Stil2">Speichere    die von der Input&ndash;Einheit gelesene Zahl an der angegebenen Adresse ab. Das    Programm h&auml;lt bei diesem Befehl an und wartet auf die Eingabe der Zahl.</p></td>
+    </tr>
+  </table>
+  <p><strong>Besondere Befehle</strong></p>
+  <table width="652" border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <td width="47" valign="top"><p>STOP</p></td>
+      <td width="28" valign="top"><p>&nbsp;</p></td>
+      <td width="215" valign="top"><p>STOP EXECUTION</p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Programm    beenden.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">NOP</td>
+      <td valign="top">&nbsp;</td>
+      <td valign="top">NO OPERATION</td>
+      <td valign="top" class="Stil2"><span class="Stil2">&quot;Leerbefehl&quot;: Befehl ohne Wirkung</span></td>
+    </tr>
+  </table>
+  <p><strong>Arithmetische Befehle</strong></p>
+  <table width="652" border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <td width="47" valign="top"><p>ADD</p></td>
+      <td width="28" valign="top"><p>X </p></td>
+      <td width="215" valign="top"><p>ADD TO    AC&nbsp; </p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Addiere    den Wert der angegebenen Speicherzelle zum AC.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>SUB</p></td>
+      <td width="28" valign="top"><p>X </p></td>
+      <td width="215" valign="top"><p>SUBTRACT    FROM AC </p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Subtrahiere    den Wert der angegebenen Speicherzelle vom AC.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">MUL</td>
+      <td valign="top">X</td>
+      <td valign="top">MULTIPLICATE WITH AC</td>
+      <td valign="top" class="Stil2">Multipliziere    den Wert der angegebenen Speicherzelle mit dem AC.</td>
+    </tr>
+    <tr>
+      <td valign="top">DIV</td>
+      <td valign="top">X</td>
+      <td valign="top">DIVIDE WITH AC</td>
+      <td valign="top" class="Stil2">Dividiere    den AC durch den Wert der angegebenen Speicherzelle.</td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>AND</p></td>
+      <td width="28" valign="top"><p>X</p></td>
+      <td width="215" valign="top"><p>AC    AND MEMORY</p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch UND mit dem entsprechenden Bit der Speicherzelle X</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>OR</p></td>
+      <td width="28" valign="top"><p>X</p></td>
+      <td width="215" valign="top"><p>AC    OR MEMORY</p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch OR mit dem entsprechenden Bit der Speicherzelle X</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>XOR</p></td>
+      <td width="28" valign="top"><p>X</p></td>
+      <td width="215" valign="top"><p>AC    XOR MEMORY</p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch XOR mit dem entsprechenden Bit der Speicherzelle X</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>NEG</p></td>
+      <td width="28" valign="top"><p>&nbsp;</p></td>
+      <td width="215" valign="top"><p>NEGATE    AC </p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Negiere AC.    (aus 1 wird 0 und umgekehrt)</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>INC</p></td>
+      <td width="28" valign="top"><p>&nbsp;</p></td>
+      <td width="215" valign="top"><p>INCREMENT    AC</p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Erh&ouml;he    den AC um 1.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>DEC</p></td>
+      <td width="28" valign="top"><p>&nbsp;</p></td>
+      <td width="215" valign="top"><p>DECREMENT    AC</p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Vermindere    den AC um 1.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>SHL</p></td>
+      <td width="28" valign="top"><p>&nbsp;</p></td>
+      <td width="215" valign="top"><p>SHIFT LEFT    AC</p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Verschiebe alle Bits im AC um eine Stelle nach links.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>SHR</p></td>
+      <td width="28" valign="top"><p>&nbsp;</p></td>
+      <td width="215" valign="top"><p>SHIFT RIGHT    AC</p></td>
+      <td width="361" valign="top" class="Stil2"><p class="Stil2">Verschiebe alle Bits im AC um eine Stelle nach rechts.</p></td>
+    </tr>
+  </table>
+  <p><strong>&nbsp;</strong><strong>Sprungbefehle</strong></p>
+  <table border="1" cellspacing="0" cellpadding="5" width="652">
+    <tr>
+      <td width="47" valign="top">        JMP </td>
+      <td width="25" valign="top"><p>X </p></td>
+      <td width="220" valign="top"><p>JUMP </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Unbedingter    Sprung. Springe zur angegebenen. Speicherzelle und fahre mit dem dort    stehenden Befehl fort.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>JMS </p></td>
+      <td width="25" valign="top"><p>X </p></td>
+      <td width="220" valign="top"><p>JUMP IF    MINUS </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Springe    zur angegebenen Speicherzelle und fahre mit dem dort stehenden Befehl fort,    wenn der AC negativ ist. Wenn nicht, dann fahre mit dem n&auml;chsten Befehl fort.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>JPL </p></td>
+      <td width="25" valign="top"><p>X </p></td>
+      <td width="220" valign="top"><p>JUMP IF    PLUS</p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Sprung,    wenn AC gr&ouml;&szlig;er 0.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>JZE </p></td>
+      <td width="25" valign="top"><p>X </p></td>
+      <td width="220" valign="top"><p>JUMP IF    ZERO</p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Sprung,    wenn AC gleich 0.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>JNM </p></td>
+      <td width="25" valign="top"><p>X </p></td>
+      <td width="220" valign="top"><p>JUMP IF    NOT MINUS </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Sprung,    wenn AC nicht kleiner 0.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>JNP </p></td>
+      <td width="25" valign="top"><p>X </p></td>
+      <td width="220" valign="top"><p>JUMP IF    NOT PLUS</p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Sprung,    wenn AC nicht gr&ouml;&szlig;er 0.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>JNZ </p></td>
+      <td width="25" valign="top"><p>X </p></td>
+      <td width="220" valign="top"><p>JUMP IF    NOT ZERO</p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Sprung,    wenn AC ungleich 0.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>JSR </p></td>
+      <td width="25" valign="top"><p>X </p></td>
+      <td width="220" valign="top"><p>JUMP TO    SUBROUTINE </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Springe    zum Unterprogramm an der angegebenen Adresse und fahre nach dem R&uuml;cksprung    mit dem n&auml;chsten Befehl fort. R&uuml;cksprungadresse wird automatisch auf dem    Stack abgelegt.</p></td>
+    </tr>
+    <tr>
+      <td width="47" valign="top"><p>RTN&nbsp; </p></td>
+      <td width="25" valign="top"><p>&nbsp;</p></td>
+      <td width="220" valign="top"><p>RETURN    FROM SUBROUTINE </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Kehre    vom Unterprogramm zur&uuml;ck zum Befehl nach der Aufrufstelle. R&uuml;cksprungadresse    wird vom Stack geholt.</p></td>
+    </tr>
+  </table>
+  <p><strong>&nbsp;Stackoperationen (allgemein)</strong></p>
+  <table border="1" cellspacing="0" cellpadding="5" width="652">
+    <tr>
+      <td width="46" valign="top">        PSH </td>
+      <td width="30" valign="top"><p>&nbsp;</p></td>
+      <td width="217" valign="top"><p>PUSH    AC TO STACK </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Lege den    AC auf dem Stack ab.</p></td>
+    </tr>
+    <tr>
+      <td width="46" valign="top"><p>POP&nbsp; </p></td>
+      <td width="30" valign="top"><p>&nbsp;</p></td>
+      <td width="217" valign="top"><p>POP FROMSTACK TO AC </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Hole    Wert vom Stack in den AC.</p></td>
+    </tr>
+    <tr>
+      <td width="46" valign="top"><p>PSHM </p></td>
+      <td width="30" valign="top"><p>X </p></td>
+      <td width="217" valign="top"><p>PUSH    MEMORY TO STACK </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Lege den    Inhalt der angegebenen Speicherzelle auf dem Stack ab.</p></td>
+    </tr>
+    <tr>
+      <td width="46" valign="top"><p>POPM </p></td>
+      <td width="30" valign="top"><p>X </p></td>
+      <td width="217" valign="top"><p>POP FROM STACK TO MEMORY </p></td>
+      <td width="359" valign="top" class="Stil2"><p class="Stil2">Hole    Wert vom Stack und speichere ihn an der angegebenen Speicherzelle ab.</p></td>
+    </tr>
+  </table>
+  <p><strong>&nbsp;Stackoperationen (SP&ndash;orientiert)</strong></p>
+  <table border="1" cellspacing="0" cellpadding="5" width="652">
+    <tr>
+      <td width="44" valign="top">        LDAS </td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>LOAD FROM STACK TO AC </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Lade den    Wert an Adresse SP+Y in den AC, wobei Y als Operator anzugeben ist.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>STAS </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>STORE AC TO STACK </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Kopiere    den AC an Adresse SP+Y.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>ADDS </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>ADD STACK TO AC </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Addiere    den Wert an Adresse SP+Y zum AC.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>SUBS </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>SUBTRACT STACK FROM AC </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Subtrahiere den Wert an Adresse SP+Y vom AC.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">MULS</td>
+      <td valign="top">Y</td>
+      <td valign="top">MULTIPLICATE AC WITH STACK</td>
+      <td valign="top" class="Stil2">Multipliziere den AC mit dem Wert an Adresse SP+Y.</td>
+    </tr>
+    <tr>
+      <td valign="top">DIVS</td>
+      <td valign="top">Y</td>
+      <td valign="top">DIVIDE AC WITH STACK</td>
+      <td valign="top" class="Stil2">Dividiere den AC durch den Wert an Adresse SP+Y.</td>
+    </tr>
+    <tr>
+      <td valign="top">ANDS</td>
+      <td valign="top">Y</td>
+      <td valign="top">AC AND STACK</td>
+      <td valign="top" class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch UND mit dem entsprechenden Bit der Speicherzelle an Adresse SP+Y</td>
+    </tr>
+    <tr>
+      <td valign="top">ORS</td>
+      <td valign="top">Y</td>
+      <td valign="top">AC OR STACK</td>
+      <td valign="top" class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch ODER mit dem entsprechenden Bit der Speicherzelle an Adresse SP+Y</td>
+    </tr>
+    <tr>
+      <td valign="top">XORS</td>
+      <td valign="top">Y</td>
+      <td valign="top">AC XOR STACK</td>
+      <td valign="top" class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch EXKLUSIV-ODER mit dem entsprechenden Bit der Speicherzelle an Adresse SP+Y</td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>OUTS </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>OUTPUT    FROM STACK </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Ausgabe    des Wertes an Adresse SP+Y.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>INS&nbsp; </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>INPUT TO    STACK </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Speichere    die von der Input&ndash;Einheit gelesene Zahl an der Adresse SP+Y ab.</p></td>
+    </tr>
+  </table>
+  <p><strong>&nbsp;Stackoperationen (BP&ndash;orientiert)</strong></p>
+  <table border="1" cellspacing="0" cellpadding="5" width="652">
+    <tr>
+      <td width="44" valign="top">        LDAB </td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>LOAD FROM STACK TO AC </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Lade den    Wert an Adresse BP+Y in den AC, wobei Y als Operator anzugeben ist..</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>STAB </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>STORE AC TO STACK </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Speichere    den AC an Adresse BP+Y.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>ADDB </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>ADD STACK TO AC </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Addiere    den Wert an Adresse BP+Y zum AC.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>SUBB </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>SUBTRACT STACK FROM AC </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Subtrahiere den Wert an Adresse BP+Y vom AC.</p></td>
+    </tr>
+    <tr>
+      <td valign="top">MULB</td>
+      <td valign="top">Y</td>
+      <td valign="top">MULTIPLICATE AC WITH STACK</td>
+      <td valign="top" class="Stil2">Multipliziere den AC mit dem Wert an Adresse BP+Y.</td>
+    </tr>
+    <tr>
+      <td valign="top">DIVB</td>
+      <td valign="top">Y</td>
+      <td valign="top">DIVIDE AC WITH STACK</td>
+      <td valign="top" class="Stil2">Dividiere den AC durch den Wert an Adresse BP+Y.</td>
+    </tr>
+    <tr>
+      <td valign="top">ANDB</td>
+      <td valign="top">Y</td>
+      <td valign="top">AC AND STACK</td>
+      <td valign="top" class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch UND mit dem entsprechenden Bit der Speicherzelle an Adresse BP+Y</td>
+    </tr>
+    <tr>
+      <td valign="top">ORB</td>
+      <td valign="top">Y</td>
+      <td valign="top">AC OR STACK</td>
+      <td valign="top" class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch ODER mit dem entsprechenden Bit der Speicherzelle an Adresse BP+Y</td>
+    </tr>
+    <tr>
+      <td valign="top">XORB</td>
+      <td valign="top">Y</td>
+      <td valign="top">AC XOR STACK</td>
+      <td valign="top" class="Stil2">Verkn&uuml;pfe    jedes Bit des AC durch EXKLUSIV-ODER mit dem entsprechenden Bit der Speicherzelle an Adresse BP+Y</td>
+    </tr>
+    
+    <tr>
+      <td width="44" valign="top"><p>INB&nbsp; </p></td>
+      <td width="35" valign="top"><p>Y</p></td>
+      <td width="214" valign="top"><p>INPUT TO    STACK </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Speichere    die von der Input&ndash;Einheit gelesene Zahl an der Adresse BP+Y ab.</p></td>
+    </tr>
+    <tr>
+      <td valign="top"><p>OUTB </p></td>
+      <td valign="top"><p>Y</p></td>
+      <td valign="top"><p>OUTPUT    FROM STACK </p></td>
+      <td valign="top" class="Stil2"><p>Ausgabe    des Wertes an Adresse BP+Y.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>SPBP </p></td>
+      <td width="35" valign="top"><p>&nbsp;</p></td>
+      <td width="214" valign="top"><p>TRANSFER    SP TO BP </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Kopiere    den Inhalt von SP in das Register BP.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>BPSP </p></td>
+      <td width="35" valign="top"><p>&nbsp;</p></td>
+      <td width="214" valign="top"><p>TRANSFER    BP TO SP </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Kopiere    den Inhalt von BP in das Register SP.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>POPB </p></td>
+      <td width="35" valign="top"><p>&nbsp;</p></td>
+      <td width="214" valign="top"><p>POP BP </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Hole    Wert vom Stack in BP.</p></td>
+    </tr>
+    <tr>
+      <td width="44" valign="top"><p>PSHB </p></td>
+      <td width="35" valign="top"><p>&nbsp;</p></td>
+      <td width="214" valign="top"><p>PUSH BP </p></td>
+      <td width="359" valign="top" class="Stil2"><p>Lege    Inhalt von BP auf dem Stack ab.</p></td>
+    </tr>
+  </table>
+  <p><strong>&nbsp;Befehle f&uuml;r den eingebauten Assembler (keine  Maschinenbefehle)</strong></p>
+  <table width="653" border="1" cellpadding="5">
+    <tr>
+      <td width="52">DEF</td>
+      <td width="543" class="Stil2">Definiert einen Namen f&uuml;r die Adresse einer  Speicherzelle. Zus&auml;tzlich muss der Wert der Zelle festgelegt werden. Die  Reservierung von Speicherzellen f&uuml;r Variablen sollte stets am Ende des  Programms erfolgen, damit es im Speicher nicht zu &Uuml;berschneidungen von Programmbefehlen  und Daten kommt.</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="Stil2"><p>Beispiel:<br />
+        <strong>a DEF 0</strong><br />
+        Es wird eine Speicherzelle reserviert. Die Adresse der Zelle kann (muss) im  Programm durch das Symbol a ersetzt werden.<br />
+          Beispiel für Verwendung: <br />
+          <strong>INM a</strong></p>
+      </td>
+    </tr>
+    <tr>
+      <td>EQUAL</td>
+      <td class="Stil2">Mit  diesem Befehl wird eine symbolische Konstante definiert.<br /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="Stil2"><p>Beispiel: <br />
+        <strong>offset EQUAL 3</strong> <br />
+          Die so definierten Konstanten k&ouml;nnen nur bei den  stackorientierten Befehlen verwendet werden und zwar dort, wo in der obigen  Liste ein Y steht.<br />
+          Beispiel für Verwendung: <br />
+          <strong>STAS offset</strong> </p>
+      </td>
+    </tr>
+  </table>
+  <p><br />
+  </p>
+</div>
+</body>
+</html>
