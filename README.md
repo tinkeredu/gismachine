@@ -1,6 +1,6 @@
 # GIS Machine
 
-Eine Webapp für den Informatikunterricht: Der Weg vom manuellen Modellrechner **CPU-Direkt** über den binären **Altair** bis zum Assembler-Programm **MNemo** – in einer App, mit einem gemeinsamen Speicher.
+Eine Webapp für den Informatikunterricht: Der Weg vom manuellen Modellrechner **CPU-Direkt** über den binären **Altair** bis zum Assembler-Programm **MNemo** – in einer App. Zum Weitergeben: [Kurzanleitung für Lehrkräfte](KURZANLEITUNG.md).
 
 ## Die drei Versionen
 
@@ -10,13 +10,15 @@ Eine Webapp für den Informatikunterricht: Der Weg vom manuellen Modellrechner *
 | 2 | **Altair** | Programme als 16-Bit-Maschinenwörter über 16 Schalter einstellen und von der CPU automatisch ausführen lassen. |
 | 3 | **MNemo** | In lesbarer Assemble-Sprache schreiben; der Assembler übersetzt in dieselben Speicherwörter. 56 Befehle, Stack, Unterprogramme. |
 
-Alle drei Versionen arbeiten auf demselben Speicher: **256 Zellen à 16 Bit**. Register und CPU-Zustand starten bei jedem Wechsel neu (wie nach einem Reset), nur das Programm bleibt erhalten.
+Alle drei Versionen haben einen Speicher mit **256 Zellen à 16 Bit**. Register und CPU-Zustand starten bei jedem Wechsel neu.
 
 ## Versionswechsel
 
 Der Wechsel zwischen den Versionen (Menü **Version**) ist passwortgeschützt. Das Standard-Passwort ist `schule`; die Lehrkraft kann es in `src/config.ts` (`SWITCH_PASSWORD`) ändern. Es ist eine Schranke für den Unterricht, kein Sicherheitsschutz.
 
-**Direkteinstieg für die Folgestunde:** Die App merkt sich Version und Programm automatisch. Über **Version → Programm-Link kopieren** entsteht ein Link, der die App direkt in dieser Version mit dem aktuellen Programm öffnet (`#mnemo`, `#altair`, `#cpudirect`, optional mit Programm im Link). Den Link kann man an die Schüler weitergeben.
+Zwischen **Altair und MNemo** lässt sich die Übernahme der Speicherzellen im Passwortdialog abwählen. Von oder zu **CPU-Direkt** startet die Zielversion immer leer. Der Import aus Altair verwendet bei der Rückübersetzung Namen wie `eingabe`, `ergebnis` und `schleife`; Altair-Dateien enthalten keine ursprünglichen Namen oder Kommentare.
+
+**Direkteinstieg für die Folgestunde:** Die App merkt sich Version und Programm. Über **Version → Programm-Link kopieren** entsteht ein Link, der die App direkt mit dem aktuellen Programm öffnet. Bei MNemo enthält er auch den Editor-Quelltext und Dateinamen. Die reinen Versionslinks (`#mnemo`, `#altair`, `#cpudirect`) enthalten kein Programm.
 
 ## Bedienung
 

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { assemble, type AssembleResult } from '../../core/mnemo/assembler'
-import { decompile } from '../../core/mnemo/decompile'
-import { readText, transferMemory, writeText } from '../../core/suite'
+import { openMnemoProgram, type MnemoStartMode } from '../../core/mnemo/program'
+import { readText, writeText, type MnemoDocument } from '../../core/suite'
 import { REPO_URL } from '../../config'
 import { useStoredFlag } from '../skin'
 import { GUIDE_STEPS, type GuideContext } from '../guides/mnemo'
@@ -13,58 +13,27 @@ import { InputField } from './mnemo/InputField'
 import { Accumulator, GroupBox, InstructionRegister, MemoryList, OutputList, Register, StackList } from './mnemo/Panels'
 import { useMachine } from './mnemo/useMachine'
 
-const DEFAULT_SOURCE = `; Addition zweier Zahlen
-\tinm zahl1\t; erste Zahl einlesen
-\tinm zahl2\t; zweite Zahl einlesen
-\tlda zahl1
-\tadd zahl2
-\tsta summe
-\toutm summe\t; Ergebnis ausgeben
-\tstop
-
-zahl1\tdef 0
-zahl2\tdef 0
-summe\tdef 0
-`
-
 const SOURCE_KEY = 'gismachine.mnemo.source'
 const NAME_KEY = 'gismachine.mnemo.filename'
 const BACKUP_KEY = 'gismachine.mnemo.sourceBackup'
 const DOC = { title: 'Befehlssatz', src: './docs/mnemo-befehlssatz.htm' }
 const PHASE_LABEL = { fetch: 'Holphase', decode: 'Dekodierphase', execute: 'Ausführungsphase' } as const
 
-const sameMemory = (a: readonly number[], b: readonly number[]) => a.length === b.length && a.every((w, i) => w === b[i])
-
-interface Boot {
-  memory: number[]
-  source: string
-  fileName: string
-  lineOfAddress: (number | null)[]
-  /** true, wenn der Quelltext aus dem übernommenen Speicher erzeugt wurde. */
-  generated: boolean
+interface MnemoViewProps extends ViewProps {
+  mode: MnemoStartMode
+  linkedDocument?: MnemoDocument
+  onDocumentChange: (document: MnemoDocument) => void
 }
 
-/**
- * Startzustand: Passt der gespeicherte Quelltext zum übernommenen Speicher, bleibt er.
- * Sonst wird der Speicher in einen Quelltext zurückübersetzt (der alte Quelltext kommt in die Sicherung).
- */
-function bootState(memory: readonly number[]): Boot {
-  const mem = transferMemory(memory)
-  const stored = readText(SOURCE_KEY) ?? DEFAULT_SOURCE
-  const fileName = readText(NAME_KEY) ?? 'programm.mno'
-  const compiled = assemble(stored)
-  if (compiled.ok && sameMemory(compiled.memory, mem)) return { memory: mem, source: stored, fileName, lineOfAddress: compiled.lineOfAddress, generated: false }
-  const source = decompile(mem)
-  if (source === null) return { memory: mem, source: stored, fileName, lineOfAddress: [], generated: false }
-  if (stored !== DEFAULT_SOURCE) writeText(BACKUP_KEY, stored)
-  const full = `; Aus dem Speicher übernommen und automatisch zurückübersetzt.\n; Variablen heißen z<Adresse>, Sprungmarken m<Adresse> – gerne umbenennen.\n${source}`
-  const result = assemble(full)
-  return { memory: mem, source: full, fileName: 'uebernommen.mno', lineOfAddress: result.ok ? result.lineOfAddress : [], generated: true }
-}
-
-export function MnemoView({ memory, onMemoryChange, info, versionMenu, skinItems, storageError }: ViewProps) {
-  const [boot] = useState(() => bootState(memory))
-  const m = useMachine(boot.memory)
+export function MnemoView({ memory, onMemoryChange, info, versionMenu, skinItems, storageError, mode, linkedDocument, onDocumentChange }: MnemoViewProps) {
+  const [boot] = useState(() => {
+    const source = readText(SOURCE_KEY)
+    const stored = source === null ? null : { source, fileName: readText(NAME_KEY) ?? 'programm.mno' }
+    const program = openMnemoProgram(memory, mode, stored, linkedDocument)
+    const previous = stored?.source && stored.source !== program.source ? stored.source : null
+    return { ...program, previous, backup: previous ?? readText(BACKUP_KEY) }
+  })
+  const m = useMachine(memory)
   const { cpu } = m
   const [source, setSource] = useState(boot.source)
   const [fileName, setFileName] = useState(boot.fileName)
@@ -79,18 +48,21 @@ export function MnemoView({ memory, onMemoryChange, info, versionMenu, skinItems
   const [showStack, toggleStack] = useStoredFlag('gismachine.mnemo.stack')
   const [showControlUnit, toggleControlUnit] = useStoredFlag('gismachine.mnemo.controlUnit')
   const [showArDr, toggleArDr] = useStoredFlag('gismachine.mnemo.arDr')
-  const [backup, setBackup] = useState(() => readText(BACKUP_KEY))
+  const [backup, setBackup] = useState(boot.backup)
   const [notice, setNotice] = useState<string | null>(boot.generated ? 'Das übernommene Programm wurde in einen MNemo-Quelltext zurückübersetzt.' : null)
   const [doc, setDoc] = useState(false)
   const [about, setAbout] = useState(false)
   const guiding = guideIndex !== null
 
   useEffect(() => {
-    if (!guiding) writeText(SOURCE_KEY, source)
-  }, [source, guiding])
+    if (boot.previous !== null) writeText(BACKUP_KEY, boot.previous)
+  }, [boot.previous])
   useEffect(() => {
-    if (!guiding) writeText(NAME_KEY, fileName)
-  }, [fileName, guiding])
+    if (guiding) return
+    writeText(SOURCE_KEY, source)
+    writeText(NAME_KEY, fileName)
+    onDocumentChange({ source, fileName })
+  }, [source, fileName, guiding, onDocumentChange])
 
   // Das Programm (256 Speicherzellen) geht an die Shell – außer während des Guides.
   useEffect(() => {

@@ -21,7 +21,7 @@ const PATH_STEP: GuideStep = {
         Du bist hier bei <b>CPU-Direkt</b>: Der Anfang. Die CPU wird von Hand bedient, jeder Befehl ist ein Klick. Danach folgen Altair (Befehle als 16-Bit-Wörter über Schalter) und MNemo (ein Assembler mit 56 Befehlen).
       </p>
       <p>
-        Beim Wechsel bleibt immer <b>dasselbe Programm</b> erhalten: die 256 Speicherzellen. Register und CPU-Zustand starten neu. Der Wechsel selbst ist passwortgeschützt (Menü „Version“).
+        Über das Menü „Version“ wechselst du mit einem Passwort. Von und zu CPU-Direkt beginnt die neue Stufe immer mit leerem Speicher.
       </p>
     </>
   ),
@@ -66,7 +66,7 @@ export const GUIDE_STEPS: GuideStep[] = [
       <>
         <p>Jede Zeile ist eine Speicherzelle: links die <b>Adresse</b> (0 … 255), rechts der <b>Inhalt</b> als 16-Bit-Dualzahl.</p>
         <p>Wartet ein Befehl auf eine Zelle, wird der Speicher rot umrandet und die Zeilen sind anklickbar.</p>
-        <p>Genau dieser Speicher kommt beim Wechsel zu Altair und MNemo mit – nur die Bedienung wird abstrakter.</p>
+        <p>Altair und MNemo haben ebenfalls 256 Speicherzellen. Beim Wechsel von CPU-Direkt bleiben deren Zellen zunächst leer.</p>
       </>
     ),
   },
@@ -126,7 +126,7 @@ export const GUIDE_STEPS: GuideStep[] = [
     body: (
       <>
         <p>Unter „Ansicht“ lassen sich Schiebebefehle ({k('SHL')}, {k('SHR')}), {k('NEG')} und die Logikbefehle ({k('AND')}, {k('OR')}, {k('XOR')}) einblenden, der AC binär anzeigen und ein Skin wählen.</p>
-        <p>Fertig? Dann weiter zu <b>Altair</b> über das Menü „Version“ – mit dem Passwort aus dem Unterricht. Dein Programm bleibt erhalten.</p>
+        <p>Fertig? Dann weiter zu <b>Altair</b> über das Menü „Version“ – mit dem Passwort aus dem Unterricht. Dort fängst du mit leerem Speicher an.</p>
         <p>Nach „Fertig“ ist der Rechner wieder im Zustand von vor dem Guide.</p>
       </>
     ),

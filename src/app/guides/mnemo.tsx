@@ -41,7 +41,7 @@ const PATH_STEP: GuideStep = {
         Du bist hier bei <b>MNemo</b>, der letzten Stufe: In Altair hast du Befehle als Bitmuster über Schalter eingestellt. Jetzt schreibst du sie als lesbare Befehlswörter (Mnemonics) – der <b>Assembler</b> übersetzt sie in genau diese Bitmuster.
       </p>
       <p>
-        Der Speicher bleibt derselbe: 256 Zellen à 16 Bit. Ein aus Altair oder CPU-Direkt übernommenes Programm wird automatisch in einen Quelltext zurückübersetzt (Variablen heißen dann <code className="rounded bg-code px-1 font-mono">z008</code>, Sprungmarken <code className="rounded bg-code px-1 font-mono">m004</code>). Der Wechsel ist passwortgeschützt (Menü „Version“).
+        Auch hier hat der Speicher 256 Zellen à 16 Bit. Übernimmst du ein Altair-Programm, erzeugt der Editor lesbaren Quelltext mit Namen wie {k('eingabe')} oder {k('schleife')}. Die ursprünglichen Namen stehen nicht im Altair-Speicher.
       </p>
     </>
   ),
@@ -57,7 +57,7 @@ const WHERE_STEP: GuideStep = {
       <li><b>Akkumulator:</b> heißt jetzt <b>Rechenwerk</b> (links oben).</li>
       <li><b>Programmsteuerung:</b> jetzt <b>Steuerung</b> unten links – Einzelschritt, Start, Pause, Reset und Tempo wie gewohnt.</li>
       <li><b>Dateneingabe/-ausgabe:</b> <b>Eingabe</b> ist ein Zahlenfeld statt Schaltern, die <b>Ausgabe</b> eine Liste aller ausgegebenen Werte.</li>
-      <li><b>Befehlssatz:</b> Die Befehle aus Altair haben in MNemo dieselben Nummern; dazu kommen u. a. Stack, Unterprogramme, MUL und DIV (56 Befehle).</li>
+      <li><b>Befehlssatz:</b> Die meisten Altair-Befehle haben in MNemo dieselben Nummern; dazu kommen u. a. Stack, Unterprogramme, MUL und DIV (56 Befehle).</li>
     </ul>
   ),
 }
@@ -157,7 +157,6 @@ export const GUIDE_STEPS: GuideStep[] = [
   {
     title: 'Hilfe und Ansicht',
     target: 'menu',
-    body: <p>Unter „Hilfe“ findest du den kompletten Befehlssatz. Unter „Ansicht“ blendest du Steuerwerk, AR/DR-Register und den Stack ein und wählst einen Skin (auch Darkmode). Über „Version“ kommst du mit Passwort zurück zu CPU-Direkt oder Altair; das Programm im Speicher wird mitgenommen. Viel Spaß beim Programmieren!</p>,
+    body: <p>Unter „Hilfe“ findest du den Befehlssatz. Über „Version“ wechselst du mit Passwort zurück: zu CPU-Direkt immer ohne Programm, zu Altair auf Wunsch mit dem Speicherinhalt. Altair kann nur die Befehle seines eigenen Befehlssatzes ausführen.</p>,
   },
 ]
-

@@ -24,7 +24,7 @@ const PATH_STEP: GuideStep = {
         Du bist hier bei <b>Altair</b>: In CPU-Direkt hast du jeden Befehl von Hand angeklickt. Jetzt stellst du Programme als 16-Bit-Maschinenwörter über Schalter ein – und die CPU führt sie selbst aus.
       </p>
       <p>
-        Der Speicher bleibt derselbe: 256 Zellen à 16 Bit. Was du in CPU-Direkt in die Zellen geschrieben hast, siehst du hier als Binärzahlen. Danach folgt MNemo, der Assembler. Der Wechsel ist passwortgeschützt (Menü „Version“).
+        Auch hier hat der Speicher 256 Zellen à 16 Bit. Aus CPU-Direkt werden keine Inhalte übernommen. Beim Wechsel zu MNemo kannst du im Passwortdialog wählen, ob das Altair-Programm mitkommt.
       </p>
     </>
   ),

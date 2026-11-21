@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { SWITCH_PASSWORD } from '../config'
-import { MEMORY_SIZE, VERSIONS, VERSION_INFO, buildHash, checkPassword, parseHash, readSession, sanitizeMemory, switchDirection, transferMemory, versionIndex, writeSession, type VersionId } from '../core/suite'
+import { MEMORY_SIZE, VERSIONS, VERSION_INFO, buildHash, canTransferProgram, checkPassword, memoryForSwitch, parseHash, readSession, sanitizeMemory, transferMemory, versionIndex, writeSession, type MnemoDocument, type VersionId } from '../core/suite'
+import type { MnemoStartMode } from '../core/mnemo/program'
 import { AltairView } from './versions/AltairView'
 import { CpudirectView } from './versions/CpudirectView'
 import { MnemoView } from './versions/MnemoView'
@@ -12,6 +13,8 @@ import { SKINS, useSkin } from './skin'
 interface BootState {
   version: VersionId
   memory: number[]
+  mode: MnemoStartMode
+  document?: MnemoDocument
 }
 
 /** Älterer Kopierweg für Browser ohne Clipboard-API (z. B. unverschlüsselte Schulserver). */
@@ -37,8 +40,9 @@ function bootState(): BootState {
   const hash = parseHash(window.location.hash)
   const session = readSession()
   const version = hash.version ?? session.version ?? 'cpudirect'
-  const memory = hash.memory ?? session.memory ?? new Array(MEMORY_SIZE).fill(0)
-  return { version, memory: transferMemory(memory) }
+  const resume = version === session.version
+  const memory = hash.memory ?? (resume ? session.memory : null) ?? new Array(MEMORY_SIZE).fill(0)
+  return { version, memory: transferMemory(memory), mode: hash.memory ? 'import' : resume ? 'resume' : 'empty', document: hash.document }
 }
 
 function Notice({ text, onClose }: { text: string; onClose: () => void }) {
@@ -58,15 +62,16 @@ function Notice({ text, onClose }: { text: string; onClose: () => void }) {
 
 export default function App() {
   const [boot] = useState(bootState)
-  // Speicher, der der jeweils aktiven Ansicht beim Mount übergeben wird (wird nur beim Versionswechsel neu gesetzt).
-  const [activeMemory, setActiveMemory] = useState(boot.memory)
-  const [version, setVersion] = useState<VersionId>(boot.version)
+  const [active, setActive] = useState(boot)
+  const { version } = active
   const memoryRef = useRef<number[]>(boot.memory)
   const versionRef = useRef<VersionId>(boot.version)
+  const mnemoDocumentRef = useRef<MnemoDocument | null>(null)
   const [skin, setSkin] = useSkin()
   const [passwordTarget, setPasswordTarget] = useState<VersionId | null>(null)
   const [passwordInput, setPasswordInput] = useState('')
   const [passwordError, setPasswordError] = useState(false)
+  const [keepProgram, setKeepProgram] = useState(true)
   const [notice, setNotice] = useState<string | null>(null)
   const [storageError, setStorageError] = useState(false)
   const persistTimer = useRef<number | null>(null)
@@ -124,11 +129,16 @@ export default function App() {
     if (target === versionRef.current) return
     setPasswordInput('')
     setPasswordError(false)
+    setKeepProgram(true)
     setPasswordTarget(target)
   }, [])
 
+  const handleMnemoDocumentChange = useCallback((document: MnemoDocument) => {
+    mnemoDocumentRef.current = document
+  }, [])
+
   const copyProgramLink = useCallback(() => {
-    const hash = buildHash(versionRef.current, memoryRef.current)
+    const hash = buildHash(versionRef.current, memoryRef.current, mnemoDocumentRef.current)
     const url = `${window.location.origin}${window.location.pathname}${hash}`
     const done = () => setNotice('Programm-Link kopiert. Er öffnet die App direkt in dieser Version mit dem aktuellen Programm.')
     const fail = () => setNotice(url)
@@ -147,19 +157,24 @@ export default function App() {
       return
     }
     const target = passwordTarget
-    const direction = switchDirection(versionRef.current, target)
+    const from = versionRef.current
+    const transferring = keepProgram && canTransferProgram(from, target)
+    const memory = memoryForSwitch(from, target, keepProgram, memoryRef.current)
     setPasswordTarget(null)
     setPasswordInput('')
     setPasswordError(false)
+    if (window.location.hash) {
+      window.history.replaceState(window.history.state, '', window.location.pathname + window.location.search)
+    }
     versionRef.current = target
-    setActiveMemory(memoryRef.current.slice())
-    setVersion(target)
+    memoryRef.current = memory
+    setActive({ version: target, memory, mode: transferring ? 'import' : 'empty' })
     setNotice(
-      direction === 'backward'
-        ? `Zurück zu ${VERSION_INFO[target].name}: Das Programm wurde übernommen, der Prozessor startet neu.`
-        : `Weiter zu ${VERSION_INFO[target].name}: Das Programm wurde übernommen, der Prozessor startet neu.`,
+      transferring
+        ? `${VERSION_INFO[target].name}: Programm übernommen. Der Prozessor startet neu.`
+        : `${VERSION_INFO[target].name}: Ohne Programm gestartet.`,
     )
-  }, [passwordTarget, passwordInput])
+  }, [passwordTarget, passwordInput, keepProgram])
 
   const versionMenu: MenuSpec = {
     label: 'Version',
@@ -174,7 +189,7 @@ export default function App() {
   }
 
   const viewProps: ViewProps = {
-    memory: activeMemory,
+    memory: active.memory,
     onMemoryChange: handleMemoryChange,
     info: VERSION_INFO[version],
     versionMenu,
@@ -186,14 +201,16 @@ export default function App() {
     <>
       {version === 'cpudirect' && <CpudirectView key="cpudirect" {...viewProps} />}
       {version === 'altair' && <AltairView key="altair" {...viewProps} />}
-      {version === 'mnemo' && <MnemoView key="mnemo" {...viewProps} />}
+      {version === 'mnemo' && (
+        <MnemoView key="mnemo" {...viewProps} mode={active.mode} linkedDocument={active.document} onDocumentChange={handleMnemoDocumentChange} />
+      )}
 
       {passwordTarget !== null && (
         <Dialog title="Versionswechsel" onClose={() => setPasswordTarget(null)}>
           <p>
             Wechsel von <strong>{VERSION_INFO[version].name}</strong> zu <strong>{VERSION_INFO[passwordTarget].name}</strong>.
           </p>
-          <p className="text-muted">Das aktuelle Programm (256 Speicherzellen) wird übernommen. Register und CPU-Zustand starten neu, wie nach einem Reset.</p>
+          <p className="text-muted">Register und CPU-Zustand starten neu.</p>
           <form
             className="mt-3 flex flex-col gap-2"
             onSubmit={(e) => {
@@ -201,6 +218,14 @@ export default function App() {
               submitPassword()
             }}
           >
+            {canTransferProgram(version, passwordTarget) ? (
+              <label className="flex items-center gap-2 text-sm">
+                <input type="checkbox" checked={keepProgram} onChange={(e) => setKeepProgram(e.target.checked)} />
+                Aktuelles Programm übernehmen
+              </label>
+            ) : (
+              <p className="text-muted">Bei einem Wechsel von oder zu CPU-Direkt wird kein Programm übernommen.</p>
+            )}
             <label className="flex flex-col gap-1 text-sm">
               Passwort
               <input

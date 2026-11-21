@@ -59,6 +59,14 @@ export function transferMemory(memory: readonly number[]): number[] {
   return clean
 }
 
+export function canTransferProgram(from: VersionId, to: VersionId): boolean {
+  return from !== to && from !== 'cpudirect' && to !== 'cpudirect'
+}
+
+export function memoryForSwitch(from: VersionId, to: VersionId, requested: boolean, memory: readonly number[]): number[] {
+  return requested && canTransferProgram(from, to) ? transferMemory(memory) : new Array<number>(MEMORY_SIZE).fill(0)
+}
+
 /* ---------- Programm in der URL (#version oder #version!base64url) ---------- */
 
 function bytesToBase64Url(bytes: Uint8Array): string {
@@ -99,25 +107,46 @@ export function decodeProgram(text: string): number[] | null {
   return sanitizeMemory(words)
 }
 
-/** Hash für einen Direktlink, z. B. `#mnemo!Ab3…`. Ohne memory nur `#mnemo`. */
-export function buildHash(version: VersionId, memory?: readonly number[]): string {
-  return memory ? `#${version}!${encodeProgram(memory)}` : `#${version}`
+export interface MnemoDocument {
+  source: string
+  fileName: string
+}
+
+export function buildHash(version: VersionId, memory?: readonly number[], document?: MnemoDocument | null): string {
+  if (!memory) return `#${version}`
+  const program = `#${version}!${encodeProgram(memory)}`
+  return version === 'mnemo' && document
+    ? `${program}!${bytesToBase64Url(new TextEncoder().encode(JSON.stringify(document)))}`
+    : program
 }
 
 export interface ParsedHash {
   version: VersionId | null
   memory: number[] | null
+  document?: MnemoDocument
 }
 
-/** Liest `#version` oder `#version!programm` aus location.hash. */
+/** Liest `#version[!programm[!quelltext]]` aus location.hash. */
 export function parseHash(hash: string): ParsedHash {
   const result: ParsedHash = { version: null, memory: null }
   const raw = hash.startsWith('#') ? hash.slice(1) : hash
-  if (!raw) return result
-  const bang = raw.indexOf('!')
-  const id = bang === -1 ? raw : raw.slice(0, bang)
-  if (isVersionId(id)) result.version = id
-  if (bang !== -1) result.memory = decodeProgram(raw.slice(bang + 1))
+  const [id, program, document, ...extra] = raw.split('!')
+  if (!isVersionId(id)) return result
+  result.version = id
+  if (extra.length || !program) return result
+  result.memory = decodeProgram(program)
+  if (id === 'mnemo' && result.memory && document) {
+    const bytes = base64UrlToBytes(document)
+    if (!bytes) return result
+    try {
+      const parsed = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes)) as Partial<MnemoDocument> | null
+      if (typeof parsed?.source === 'string' && typeof parsed.fileName === 'string') {
+        result.document = { source: parsed.source, fileName: parsed.fileName }
+      }
+    } catch {
+      // Das Speicherabbild bleibt auch ohne gültigen Quelltext nutzbar.
+    }
+  }
   return result
 }
 

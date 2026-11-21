@@ -6,6 +6,8 @@ import {
   decodeProgram,
   encodeProgram,
   isVersionId,
+  canTransferProgram,
+  memoryForSwitch,
   parseHash,
   sanitizeMemory,
   switchDirection,
@@ -43,6 +45,17 @@ describe('Versionswechsel', () => {
 })
 
 describe('Programm-Transfer zwischen den Versionen', () => {
+  it('erlaubt die Übernahme nur zwischen Altair und MNemo und nur bei Auswahl', () => {
+    for (const from of VERSIONS) {
+      for (const to of VERSIONS) {
+        const expected = from !== to && [from, to].includes('altair') && [from, to].includes('mnemo')
+        expect(canTransferProgram(from, to)).toBe(expected)
+        expect(memoryForSwitch(from, to, true, sample)).toEqual(expected ? sample : new Array(MEMORY_SIZE).fill(0))
+        expect(memoryForSwitch(from, to, false, sample)).toEqual(new Array(MEMORY_SIZE).fill(0))
+      }
+    }
+  })
+
   it('übernimmt genau die 256 Speicherzellen als Kopie', () => {
     const transferred = transferMemory(sample)
     expect(transferred).toHaveLength(MEMORY_SIZE)
@@ -78,6 +91,14 @@ describe('Direktlinks', () => {
     const parsed = parseHash(hash)
     expect(parsed.version).toBe('mnemo')
     expect(parsed.memory).toEqual(sample)
+  })
+
+  it('erhält MNemo-Quelltext und Dateinamen im Programm-Link', () => {
+    const document = { source: '; Übung\nINM a\na DEF 1\n', fileName: 'Übung.mno' }
+    const hash = buildHash('mnemo', sample, document)
+    expect(parseHash(hash)).toEqual({ version: 'mnemo', memory: sample, document })
+    expect(parseHash(buildHash('altair', sample, document)).document).toBeUndefined()
+    expect(parseHash(buildHash('mnemo', sample) + '!kaputt')).toEqual({ version: 'mnemo', memory: sample })
   })
 
   it('parseHash versteht auch einen reinen Versionslink', () => {
