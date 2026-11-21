@@ -21,15 +21,14 @@ describe('decompile', () => {
 
   it('übersetzt das Altair-Beispiel (OUTM 8, STOP, Daten in Zelle 8) exakt zurück', () => {
     const source = roundtrip(EXAMPLES[0].memory)
-    expect(source).toContain('outm z008')
-    expect(source).toContain('stop')
-    expect(source).toContain('z008\tdef 13')
+    expect(source).toContain('OUTM ausgabe')
+    expect(source).toContain('STOP')
+    expect(source).toContain('ausgabe\tDEF 13')
   })
 
   it('übersetzt alle Altair-Beispiele, deren Daten hinter dem Code liegen', () => {
     for (const example of EXAMPLES) {
-      const source = decompile(example.memory)
-      if (source) expect(assemble(source).memory).toEqual(example.memory)
+      expect(roundtrip(example.memory)).not.toContain('Keine passende Befehlsfolge')
     }
   })
 
@@ -41,9 +40,9 @@ describe('decompile', () => {
     mem[3] = altairEncode(30, 0) // JMP 0
     mem[4] = altairEncode(39) // STOP
     const source = roundtrip(mem)
-    expect(source).toMatch(/^m000$/m)
-    expect(source).toMatch(/^m004$/m)
-    expect(source).toContain('z020\tdef 0')
+    expect(source).toMatch(/^schleife$/m)
+    expect(source).toMatch(/^programmende$/m)
+    expect(source).toContain('eingabe\tDEF 0')
   })
 
   it('übersetzt reine Daten (z. B. aus CPU-Direkt) als Variablen', () => {
@@ -52,7 +51,7 @@ describe('decompile', () => {
     mem[9] = 3
     mem[10] = 0xfff8
     const source = roundtrip(mem)
-    expect(source).toContain('z010\tdef -8')
+    expect(source).toContain('daten010\tDEF -8')
   })
 
   it('weicht auf reine Datenzellen aus, wenn der Code nicht darstellbar ist', () => {
@@ -60,6 +59,15 @@ describe('decompile', () => {
     mem[0] = altairEncode(1, 0) // LDA 0 – Variable im Codebereich
     mem[1] = altairEncode(39)
     const source = roundtrip(mem)
-    expect(source).toContain('z000\tdef 256')
+    expect(source).toContain('Keine passende Befehlsfolge')
+    expect(source).toContain('daten000\tDEF 256')
+  })
+
+  it('benennt mehrere Eingaben eindeutig und trennt sie vom Ergebnis', () => {
+    const source = roundtrip(EXAMPLES[1].memory)
+    expect(source).toContain('INM eingabe008')
+    expect(source).toContain('INM eingabe009')
+    expect(source).toContain('STA ergebnis')
+    expect(source).toContain('OUTM ergebnis')
   })
 })
